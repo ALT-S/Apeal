@@ -34,11 +34,35 @@ class FrontController extends Controller
     }
 
     /**
+     * @Route("/Jean-Marc Durrieu", name="page_JM")
+     */
+    public function page_JMAction()
+    {
+        return $this->render('front/jm.html.twig');
+    }
+
+    /**
+     * @Route("/Marie-Helene Lavergne", name="page_MH")
+     */
+    public function page_MHAction()
+    {
+        return $this->render('front/mh.html.twig');
+    }
+    
+    /**
+     * @Route("/Monsieur Serge", name="page_serge")
+     */
+    public function page_sergeAction()
+    {
+        return $this->render('front/serge.html.twig');
+    }
+
+    /**
      * @Route("/Blog", name="blog")
      */
     public function blogAction()
     {
-        return $this->render(':front:blog.html.twig');
+        return $this->render('front/blog.html.twig');
     }
 
     /**
