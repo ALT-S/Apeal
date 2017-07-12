@@ -15,7 +15,7 @@ Actualités<br>Blog: News<br>Blog
 '- Contact': '- Contact'
 Contact: Contact
 Home: Home
-'A propos': 'About'
+'A propos': About
 Blog: Blog
 'Liens amis:': 'Friends Links:'
 'Richard Volante - Photos': 'Richard Volante - Photos'
@@ -27,3 +27,28 @@ Apeal-site: Apeal-site
 'De :': 'From  :'
 'Email :': 'Email :'
 Message: Message
+'Qui sommes-nous ?': 'The association ?'
+"APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;}\">\n                        A Prendre Et A l'Essai </span> <br>\n                        Association dont l'objectif est de promouvoir le travail\n                        d'artistes.": "APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;}\">\n                        A Prendre Et A l'Essai </span> <br>\n                        Association whose objective is to promote the work \n                        of artists."
+"Elle a vu le jour en 2011 à l'initiative de Jean-Marc DURRIEU et Marie-Helene\n                        LAVERGNE, passionnés d'arts.": "It was created in 2011 at the initiative of Jean-Marc DURRIEU and Marie-Helene\n                        LAVERGNE, arts enthusiasts."
+"Nous regroupons des artistes dans les domaines d'arts visuel, d'arts plastique\n                        et des arts sonores.": "We bring together artists in the fields of visual arts, plastic arts\n                        et des arts sonores."
+"Nous proposons également des ateliers en art visuel et art plastique ainsi\n                        que des captations et réalisation de clips": "We also offer workshops in visual art and plastic art \n                        as well as capturing and making clips"
+'Alors n''hésitez pas à nous contacter...': 'So, do not hesitate to contact us...'
+'Bonne visite sur notre site !': 'Enjoy your visit on our site !'
+'- Blog': '- Blog'
+'- Jean-Marc Durrieu': '- Jean-Marc Durrieu'
+'Jean-Marc DURRIEU': 'Jean-Marc DURRIEU'
+'- Marie-Helene LAVERGNE': '- Marie-Helene LAVERGNE'
+'Marie-Helene LAVERGNE': 'Marie-Helene LAVERGNE'
+'- Monsieur Serge': '- Monsieur Serge'
+'Monsieur Serge': 'Monsieur Serge'
+'Demande de réinitialisation de mot de passe !': 'Ask for the password reset !'
+'Bonjour,': 'Hello,'
+'Nom d''utilisateur :': 'User name :'
+'Pour réinitialiser votre mot de passe, merci de vous rendre sur :': 'To reset you password, thank to go on :'
+'Cordialement,': 'Best regards,'
+'L''équipe, APEAL': 'All the Team, APEAL'
+'Mot de passe oublié': 'Forgotten password'
+'- Réinitialiser le mot de passe': '- Reset the password'
+'Réinitialisation du mot de passe': 'Reset the password'
+'- Demande de réinitialisation de mot de passe': '- Ask for the password reset'
+'Demande de réinitialisation du mot de passe': 'Ask for the password reset'

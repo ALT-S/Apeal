@@ -87,3 +87,10 @@ a.bts:hover{
     color: white;
     text-decoration: none;
 }
+
+.errorpage{
+    text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    color:#e4551d ;
+}

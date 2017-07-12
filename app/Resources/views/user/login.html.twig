@@ -7,7 +7,6 @@
     <title>{% block title %}Apeal{% endblock %}</title>
 
     {% block stylesheets %}
-        {{ parent() }}
         {# On charge le CSS de bootstrap depuis le site directement #}
         <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">

@@ -1,0 +1,30 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div class="container" >
+        <div class="aPropos" >
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 " style="margin-bottom: 54px;">
+                    <p class="oups" style="margin-bottom:50px; text-align: center">
+                        <img alt="photo" class="photo" src= {{ asset('images/47-error-404-pagebis.jpg') }}>
+                    </p>
+                    <h5 class="error" style="text-align: center;text-transform: uppercase; color: #777; font-size: 32px">
+                        {% trans %}Oups! Une erreur s'est produite{% endtrans %}</h5>
+                    <h2 class="errorpage">{% trans %}Erreur "{% endtrans %}{{ status_code }}" </br>
+                        {% trans %}Page non trouvé !{% endtrans %}
+                    </h2>
+
+                    <p class="size">{% trans %}Désolé, mais nous n'avons pas pu trouver la page que vous cherchez.
+                        Elle a peut être disparue dans les airs, a été effacée, modifiée ou remis
+                        temporairement en brouillon{% endtrans %}</p>
+
+                    <p class="size">{% trans %}Veuillez vérifier que vous avez bien écrit l'url de la
+                        page{% endtrans %}</p>
+
+                    <p class="color">{% trans %}Nous vous prions de bien vouloir nous en excusez !{% endtrans %}</p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

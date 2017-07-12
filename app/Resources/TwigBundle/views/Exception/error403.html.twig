@@ -1,0 +1,41 @@
+{% extends "layout.html.twig" %}
+
+{% block body %}
+    <div class="container">
+        <div class="aPropos">
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 " style="margin-bottom: 54px;">
+                    <p class="oups" style="margin-bottom:50px; text-align: center">
+                        <img alt="photo" class="photo" src= {{ asset('images/47-error-404-pagebis.jpg') }}>
+                    </p>
+
+                    <h5 class="error"
+                        style="text-align: center;text-transform: uppercase; color: #777; font-size: 32px">
+                        {% trans %}Oups! Une erreur s'est produite{% endtrans %}</h5>
+
+                    <h2 class="errorpage">{% trans %}Erreur {% endtrans %}"{{ status_code }}" {% trans %}- Accès
+                        refusé/interdit {% endtrans %}<br>
+                        {% trans %}Vous avez trébuché sur notre système de sécurité !!{% endtrans %}</h2>
+
+                    <p class="size">
+                        {% trans %}Très probablement, vous avez essayé d'accéder à une fonctionnalité qui est
+                        bloquée.{% endtrans %}
+                    </p>
+
+                    <p class="size">
+                        {% trans %}Si vous pensez que ce message est erroné (c'est-à-dire que vous essayez une fonction
+                        qui devrait fonctionner), veuillez nous envoyer un email à jmdurrieu@hotmail.fr
+                        pour nous dire ce qui s'est passé, nous le réparerons, puis nous vous enverrons un
+                        email.{% endtrans %}
+                    </p>
+
+                    <p class="size">
+                        {% trans %}Désolé pour les inconvénients causés ...{% endtrans %}
+                    </p>
+
+                    <p class="color">Nous vous prions de bien vouloir nous en excusez !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

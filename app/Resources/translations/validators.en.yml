@@ -1,0 +1,3 @@
+'Ce champs ne doit pas être vide': 'This field should not be blank'
+'Veuillez entrer une adresse email valide': 'Please enter a valid email address'
+'Le mot de passe doit avoir au moins 7 caractères et contenir au moins 1 chiffre, une majuscule et une minuscule.': 'The password must have at least 7 characters and contains 1 number, a capital letter and a lower case letter'
