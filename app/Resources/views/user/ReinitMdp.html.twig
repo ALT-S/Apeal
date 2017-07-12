@@ -1,0 +1,46 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ parent() }}{% trans %} - Réinitialiser le mot de passe{% endtrans %}{% endblock %}
+{% block body %}
+
+    <h2>{% trans %}Réinitialisation du mot de passe{% endtrans %}</h2>
+    <div class="container">
+        {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+        {{ form_errors(form) }}
+        <div class="row row-centered login">
+
+            <div class="form-group col-xs-12 col-md-12 col-centered">
+                <div class="col-xs-12 col-md-4 col-centered  control-label loginbis">
+                    {{ form_label (form.plainPassword.first, "Mot de passe :",{'label_attr': {'class': ' control-label '}}) }}
+
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.plainPassword.first) }}
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-centered ">
+                    {{ form_widget (form.plainPassword.first, {'attr': {'class': 'form-control formulaire_contact'}})  }}
+                </div>
+            </div>
+
+            <div class="form-group col-xs-12 col-md-12 col-centered">
+                <div class="col-xs-12 col-md-4 col-centered  control-label loginbis">
+                    {{ form_label (form.plainPassword.second,"Confirmation du mot de passe :", {'label_attr': {'class': ' control-label '}}) }}
+                    {# Affichage des erreurs pour ce champ précis. #}
+                    {{ form_errors(form.plainPassword.second) }}
+                </div>
+                <div class="col-xs-12 col-sm-8 col-md-8 col-centered">
+                    {{ form_widget (form.plainPassword.second, {'attr': {'class': 'form-control formulaire_contact'}}) }}
+                </div>
+            </div>
+            <div class="form-group ">
+                <div class="col-centered">
+                    {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                    {{ form_widget(form.envoyer, {'label': 'Envoyer','attr': {'class': 'btn envoyer_formulaire' }}) }}
+
+                </div>
+            </div>
+            {{ form_widget(form._token) }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}

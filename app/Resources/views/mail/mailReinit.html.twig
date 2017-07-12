@@ -1,0 +1,39 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% trans %}APEAL{% endtrans %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/css.css')) }}">
+    {% endblock %}
+</head>
+
+<body>
+
+<div style="text-align: center">
+    <img alt="logo" class="img-responsive logo" src="https://s-media-cache-ak0.pinimg.com/originals/c2/23/af/c223af5ace3620135cfc556f27eb108b.png"
+         style=" width: 262px; height: 193px ;">
+</div>
+
+<h1 style="background-color: #519D9E; color: white; padding: 20px; text-align: center; margin-bottom: 40px; margin-top: 0;">{% trans %}APEAL{% endtrans %}</h1>
+
+<h2 style="text-align: center;margin-bottom: 40px">{% trans %}Demande de réinitialisation de mot de passe !{% endtrans %}</h2>
+
+<p style="font-size: 18px; text-decoration: underline;margin-bottom: 42px;">{% trans %}Bonjour,  {% endtrans %} {{ user.name }}  {{ user.firstName }}  :</p>
+
+<div>
+    <p style="font-size: 20px"><strong>{% trans %}Nom d'utilisateur :{% endtrans %}</strong> {{ user.username }}</p>
+    <p style="font-size: 20px"><strong>{% trans %}Pour réinitialiser votre mot de passe, merci de vous rendre sur :{% endtrans %} </strong><a href="{{ url('reinit-mdp', {token: user.tokenRegenerationMotDePasse}) }}">{{ url('reinit-mdp', {token: user.tokenRegenerationMotDePasse}) }}</a></p>
+</div>
+
+<p>{% trans %}Cordialement, {% endtrans %}</p>
+<p>{% trans %}L'équipe, APEAL{% endtrans %}</p>
+
+
+
+</body>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% block title %}Apeal{% endblock %}</title>
+
+    {% block stylesheets %}
+        {{ parent() }}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ asset('css/connexion.css') }}">
+    {% endblock %}
+
+
+</head>
+
+<body>
+{# S'il y a une erreur, on l'affiche dans un joli cadre #}
+{% if error %}
+    <div class="alert alert-danger">{{ error.message }}</div>
+{% endif %}
+
+<div class="container">
+
+
+    <h1><img src="{{ asset('images/logo.png') }}" alt="Apeal"> <span style="margin-left: 25px"></span></h1>
+
+    {# Le formulaire, avec URL de soumission vers la route « login_check » comme on l'a vu #}
+    <form action="{{ path('login_check') }}" method="post">
+        <h2>Identification</h2>
+        <label for="username"></label>
+        <input class="form-control" type="text" id="username" placeholder="Login" name="_username"
+               value="{{ last_username }}"/>
+        <br/>
+
+        <label for="password"></label>
+        <input class="form-control" type="password" id="password" name="_password" placeholder="Mot de passe"/>
+        <br/>
+        <input class="envoyer" type="submit" value="Connexion"/>
+        <div class="form-group" style="text-align: center;">
+            <div class=" col-centered password mdp">
+                <a class="bts-mdp" href="{{ path ('reset') }}">{% trans %}Mot de passe oublié{% endtrans %}</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+</body>
+</html>

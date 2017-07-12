@@ -1,0 +1,36 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ parent() }}{% trans %} - Demande de réinitialisation de mot de passe{% endtrans %}{% endblock %}
+{% block body %}
+
+    <h2>{% trans %}Demande de réinitialisation du mot de passe{% endtrans %}</h2>
+
+    <div class="container">
+        <div class="row row-centered login">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+            {{ form_errors(form) }}
+
+            <div class="form-group col-xs-12 col-md-12 col-centered ">
+                {# Génération du label. #}
+                {{ form_label(form.email, "Email :", {'label_attr': {'class': 'col-xs-12 col-md-3 col-centered control-label '}}) }}
+
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.email) }}
+
+                <div class="col-xs-12 col-md-8 col-centered">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control formulaire_contact'}}) }}
+                </div>
+            </div>
+
+            <div class="col-centered">
+                {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                {{ form_widget(form.envoyer, {'label': 'Envoyer','attr': {'class': 'btn envoyer_formulaire' }}) }}
+
+            </div>
+            {{ form_widget(form._token) }}
+            {{ form_rest(form) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+
+{% endblock %}
