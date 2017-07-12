@@ -1,0 +1,83 @@
+{% extends "layout.html.twig" %}
+{% block title %}{{ parent() }}{% trans %} - Contact{% endtrans %}{% endblock %}
+{% block body %}
+
+    <div class="container formContact testimonial">
+    <h2>{% trans %}Contact{% endtrans %}</h2>
+
+
+
+        <div class="formContact row row-centered" style="background-color: #7cc4cc; padding-top: 45px; padding-bottom: 45px">
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            {# Les erreurs générales du formulaire. #}
+            {{ form_errors(form) }}
+
+            {# Génération manuelle et éclatée : #}
+            <div class="form-group col-xs-12 col-md-12 col-centered">
+                {# Génération du label. #}
+                {{ form_label(form.nom, "Nom :", {'label_attr': {'class': 'col-xs-12 col-md-3 col-centered  control-label  '}}) }}
+
+                <div class="col-xs-12 col-md-8 col-centered">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.nom, {'attr': {'class': 'form-control formulaire_contact'}}) }}
+                </div>
+            </div>
+
+            <div class=" col-xs-12">
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.nom) }}
+            </div>
+            <div class="form-group col-xs-12 col-md-12 col-centered">
+                {# Génération du label. #}
+                {{ form_label(form.prenom, "Prénom :", {'label_attr': {'class': 'col-xs-12 col-md-3 col-centered control-label '}}) }}
+
+                <div class="col-xs-12 col-md-8 col-centered">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.prenom, {'attr': {'class': 'form-control formulaire_contact'}}) }}
+                </div>
+            </div>
+            <div class=" col-xs-12">
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.prenom) }}
+            </div>
+
+            <div class="form-group col-xs-12 col-md-12 col-centered">
+                {# Génération du label. #}
+                {{ form_label(form.email, "Email :", {'label_attr': {'class': 'col-xs-12 col-md-3 col-centered control-label '}}) }}
+
+                <div class="col-xs-12 col-md-8 col-centered">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.email, {'attr': {'class': 'form-control formulaire_contact'}}) }}
+                </div>
+
+            </div>
+            <div class=" col-xs-12">
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.email) }}
+            </div>
+
+            <div class="form-group message_contenu col-xs-12 col-md-12 col-centered">
+                {# Génération du label. #}
+                {{ form_label(form.contenu, "Votre message :", {'label_attr': {'class': 'col-xs-12 col-md-3 col-centered  control-label '}}) }}
+
+                <div class="col-xs-12 col-md-8 col-centered">
+                    {# Génération de l'input. #}
+                    {{ form_widget(form.contenu, {'attr': {'class': 'form-control message_contact'}}) }}
+                </div>
+            </div>
+            <div class=" col-xs-12">
+                {# Affichage des erreurs pour ce champ précis. #}
+                {{ form_errors(form.contenu) }}
+            </div>
+
+            <div class="col-xs-12 col-md-12 col-centered col-centered">
+                {# Pour le bouton, pas de label ni d'erreur, on affiche juste le widget #}
+                {{ form_widget(form.envoyer, {'attr': {'class': ' col-xs-offset-12 col-md-offset-10 col-centered  control-label col-centered btn envoyer_formulaire'}}) }}
+
+            </div>
+            {{ form_widget(form._token) }}
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

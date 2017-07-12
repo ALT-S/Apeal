@@ -1,0 +1,51 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }}{% trans %} - A propos{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="aPropos">
+            <h1>{% trans %}Qui sommes-nous ?{% endtrans %}</h1>
+            <div class="row">
+                <div class="col-xs-offset-3 col-xs-6 ">
+                    <p>{% trans %}
+                        APEAL, <span style="margin-left: 9px;color: #7cc4cc;font-weight: bold;}">
+                        A Prendre Et A l'Essai </span> <br>
+                        Association dont l'objectif est de promouvoir le travail
+                        d'artistes.
+                        {% endtrans %}
+                    </p>
+                    <p>{% trans %}
+                        Elle a vu le jour en 2011 à l'initiative de Jean-Marc DURRIEU et Marie-Helene
+                        LAVERGNE, passionnés d'arts.
+                        {% endtrans %}
+                    </p>
+                    <p>{% trans %}
+                        Nous regroupons des artistes dans les domaines d'arts visuel, d'arts plastique
+                        et des arts sonores.
+                        {% endtrans %}
+                    </p>
+                    <p>{% trans %}
+                        Nous proposons également des ateliers en art visuel et art plastique ainsi
+                        que des captations et réalisation de clips
+                        {% endtrans %}
+                    </p>
+                    <p>{% trans %}
+                        Alors n'hésitez pas à nous contacter...
+                        {% endtrans %}
+                    </p>
+                    <p style="text-transform: uppercase; margin-top: 52px;color: #e4551d;font-weight: bold">
+                        {% trans %}Bonne visite sur notre site !
+                        {% endtrans %}
+                    </p>
+                </div>
+            </div>
+            <div class="col-xs-offset-7 col-xs-2 " style="margin-bottom: 71px; text-align: center;    margin-top: 32px;">
+                <div class=" bouton ">
+                    <span style="margin-left: 5px;">
+                        <a class="bts" href="{{ path('contact') }}">{% trans %}Contact{% endtrans %}
+                    </a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

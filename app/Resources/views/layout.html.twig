@@ -1,0 +1,143 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <title>Apeal</title>
+    <meta name="robots" content="noindex, follow">
+    {% block stylesheets %}
+    <link href="{{ asset('css/css.css') }}" rel='stylesheet' type='text/css'/>
+    <link href="{{ asset('css/vendor/bootstrap.css') }}" rel='stylesheet' type='text/css'/>
+    <link rel="stylesheet" href="{{ asset('css/vendor/font-awesome.min.css') }}">
+    <script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+
+    <link href="{{ asset('css/theme/theme-nova.css') }}" rel='stylesheet' type='text/css'/>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,300,400,600,700,900' rel='stylesheet'
+          type='text/css'>
+    {% endblock %}
+    <title>{% block title %}{% trans %}Apeal-site{% endtrans %}{% endblock %}</title>
+
+</head>
+<body>
+
+<div class="header">
+    <div class="container">
+        <div class="logo">
+            <a href="{{ path('homepage') }}">
+                <img src="{{ asset('images/logo.png') }}" alt="Apeal">
+            </a>
+        </div>
+        <div class="menu" style="margin-top: 37px;">
+            <a class="toggleMenu" href="#">
+                <img src="{{ asset('images/theme/nav_icon.png') }}" alt=""/>
+            </a>
+            <ul class="nav" id="nav">
+                <li class="current"><a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a></li>
+                <li><a href="{{ path('about') }}">{% trans %}A propos{% endtrans %}</a></li>
+                <li><a href="services.html">Jean Marc Durrieu</a></li>
+                <li><a href="blog.html">Marie-Helene Lavergne</a></li>
+                <li><a href="blog.html">Monsieur Serge</a></li>
+                <li><a href="{{ path('blog') }}">{% trans %}Blog{% endtrans %}</a></li>
+                <li><a href="{{ path('contact') }}">{% trans %}Contact{% endtrans %}</a></li>
+                <li class="langue langue-bis">
+                    {% if app.request.locale != 'en' %}
+                        <a href="?_locale=en">
+                            <img class="drapeau" alt="Flag" src="{{ asset('images/gb.png') }}"
+                                 style="width: 33px;padding-bottom: 7px;" title="English">
+                        </a>
+                    {% elseif app.request.locale != 'fr' %}
+                        <a href="?_locale=fr">
+                            <img class="drapeau" alt="Drapeau" src="{{ asset('images/fr.png') }}"
+                                 style="width: 33px;padding-bottom: 7px;" title="Français">
+                        </a>
+                    {% endif %}
+                </li>
+            </ul>
+            <script type="text/javascript" src="{{ asset('js/theme/responsive-nav.js') }}"></script>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+{% if app.session.flashBag.has('notice') %}
+    <div class="alert alert-success">
+        {% for msg in app.session.flashBag.get('notice') %}
+            {{ msg }}
+        {% endfor %}
+    </div>
+{% endif %}
+{% block body %}
+
+{% endblock %}
+
+<div class="footer">
+    <div class="footer_midle">
+        <div class='container'>
+            <div class="row">
+                <div class="col-xs-3">
+                    <ul class="social_left">
+                        <li class="facebook"><a href="#"><i class="fa fa-facebook-square fa-3x"></i></a></li>
+                        <li class="fb_text">
+                            <h4><a href="https://www.facebook.com/jeanmarc.durrieu.9">Facebook</a></h4>
+                        </li>
+                        <div class="clearfix"></div>
+                    </ul>
+                </div>
+                <div class='col-xs-9' style="border-left: solid 1px #e4551d;">
+                    <div class='col-xs-12'>
+                        <h3>{% trans %}Liens amis: {% endtrans %}</h3>
+                        <div class="col-sm-3" style="padding-left: 0">
+                            <ul class="social_left">
+                                <li class="fb_text">
+                                    <h4><a href="http://www.richardvolante.com/">
+                                            {% trans %}Richard Volante - Photos{% endtrans %}</a>
+                                    </h4>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3" style="padding-left: 0">
+                            <ul class="social_left">
+                                <li class="fb_text">
+                                    <h4>
+                                        <a href="https://www.editionsdejuillet.com/collections/vendors?q=Richard%20Volante%2C%20Jean-Baptiste%20Gandon">
+                                            {% trans %}Richard Volante - Edition{% endtrans %}</a>
+                                    </h4>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3" style="padding-left: 0">
+                            <ul class="social_left">
+                                <li class="fb_text">
+                                    <h4><a href="https://soundcloud.com/monsieur-serge">
+                                            {% trans %}Monsieur Serge - Musique{% endtrans %}
+                                        </a>
+                                    </h4>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                        <div class="col-sm-3" style="padding-left: 0">
+                            <ul class="social_left">
+                                <li class="fb_text">
+                                    <h4><a href="#">
+                                            {% trans %}Liens autre - Dessinatrice{% endtrans %}</a>
+                                    </h4>
+                                </li>
+                                <div class="clearfix"></div>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer_bottom">
+        <div class="copy">
+            <p>Copyright &copy; 2017 Alt-Design</p>
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>

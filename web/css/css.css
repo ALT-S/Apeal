@@ -1,0 +1,89 @@
+img.img-responsive.MHL {
+    display: inline;
+}
+
+div.formContact > form > div > div > input {
+    border: 0;
+    transition: 0.5s;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+div.formContact > form > div > div > input:focus {
+    transition: 0.5s;
+    border-bottom: 4px solid #0E4551;
+    background-color: white;
+    color: black;
+}
+
+div.formContact > form > div > div > textarea:focus {
+    transition: 0.5s;
+    border-bottom: 4px solid #0E4551;
+    background-color: white;
+    color: black;
+}
+
+.btn.envoyer_formulaire{
+    padding: 5px 10px;
+    transition: 0.5s;
+    background-color: #e4551d;
+    color: white;
+    border: none;
+    border-radius: 0;
+}
+
+.btn.envoyer_formulaire:hover {
+    transition: 0.5s;
+    box-shadow: 4px 4px #0E4551;
+    color: white;
+    border: none;
+    border-radius: 0;
+}
+
+.aPropos h1{
+    font-size: 3em;
+    color: #555;
+    line-height: 1.4em;
+    margin: 0em;
+    letter-spacing: 1px;
+    font-weight: 500;
+    text-transform: uppercase;
+    text-align: center;
+    border-top: 1px solid #e6e6e6;
+    margin-top: 20px;
+    margin-bottom: 72px;
+    padding-top: 20px;
+}
+
+.col-xs-offset-3.col-xs-6 p{
+    margin-bottom: 20px;
+    font-size: 130%;
+    text-align: justify;
+}
+
+div.bouton{
+    padding: 5px 10px;
+    transition: 0.5s;
+    background-color: #0E4551;
+    border: none;
+    border-radius: 0;
+}
+
+div.bouton:hover {
+    transition: 0.5s;
+    box-shadow: 4px 4px #e4551d;
+    border: none;
+    border-radius: 0;
+}
+
+a.bts{
+    color: white;
+    font-weight: bold;
+    text-align: center;
+    text-decoration: none;
+}
+
+a.bts:hover{
+    color: white;
+    text-decoration: none;
+}

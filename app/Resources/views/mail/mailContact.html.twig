@@ -1,0 +1,55 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>{% trans %}Apeal-site{% endtrans %}</title>
+
+    {% block stylesheets %}
+        {# On charge le CSS de bootstrap depuis le site directement #}
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="{{ absolute_url(asset('css/css.css')) }}">
+    {% endblock %}
+</head>
+
+<body>
+
+<div class="header" style="background: #fff;padding: 2em 0;">
+    <div class="container" style="display: flex;padding-bottom: 36px;border-bottom: 1px solid #e6e6e6;">
+        <div class="logo" style="text-align: left; margin-top: 20px;">
+            <img alt="logo" class="img-responsive logo"
+                 src="https://s-media-cache-ak0.pinimg.com/originals/e1/ed/8f/e1ed8f38ad439b3fab076c0408f1c904.png">
+        </div>
+        <h2 style="text-align: center;margin-bottom: 40px;padding-top: 42px; margin-left: 63px;
+        font-family: 'Source Sans Pro' sans-serif;text-transform: uppercase;color: #777;     font-weight: 600;">
+            {% trans %}Contact APEAL !{% endtrans %}
+        </h2>
+    </div>
+</div>
+
+<div class="container">
+    <p style="font-size: 20px;margin-bottom: 20px;"><strong
+                style="font-family: 'Source Sans Pro' sans-serif;text-transform: uppercase;color: #7cc4cc;font-weight: 600;">
+            {% trans %}De : {% endtrans %}</strong>
+        <span>{{ contact.nom }} {{ contact.prenom }}</span></p>
+    <p style="font-size: 20px;margin-bottom: 20px;"><strong
+                style="font-family: 'Source Sans Pro' sans-serif;text-transform: uppercase;color: #7cc4cc;font-weight: 600;">
+            {% trans %}Email :{% endtrans %}</strong>
+        <span>{{ contact.email }}</span></p>
+</div>
+
+<div>
+    <div class="container">
+        <p style="font-size: 20px; margin-bottom: 20px;margin-top: 43px;">
+            <strong style="text-decoration: underline;text-decoration-color: #e4551d;font-family: 'Source Sans Pro' sans-serif;text-transform: uppercase;color: #777;     font-weight: 600;">
+                {% trans %}Message{% endtrans %}</strong> :
+        <div class="container" style="background-color: white;padding: 15px 0 56px 12px;border: solid 2px #a7c8cd;">
+            <span>{{ contact.contenu }}</span>
+        </div>
+        </p>
+
+    </div>
+</div>
+
+</body>

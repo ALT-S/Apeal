@@ -1,0 +1,108 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }}{% trans %} - Accueil{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="banner text-center">
+        <div class="container">
+            <div class="banner-info">
+                <h1>{% trans %}APEAL{% endtrans %}</h1>
+                <p>{% trans %}Association A Prendre Et A L'essai,<br>
+                    regroupant des artistes dans le domaine des arts visuels, des arts plastiques
+                    et des arts sonores.{% endtrans %}
+                </p>
+                <label class="page-scroll"><a class="banner-btn class scroll" href="#feature"><i
+                                class="fa fa-angle-double-down fa-4x"></i></a></label>
+            </div>
+        </div>
+    </div>
+
+    <div class="main" id="feature">
+        <div class="content_white" style="padding-bottom:26px;">
+            <h2>{% trans %}Bienvenue sur notre site!{% endtrans %}</h2>
+            <p style="margin-top:19px;">{% trans %}Nous vous présentons les artistes de notre association :{% endtrans %}</p>
+        </div>
+        <div class="featured_content" >
+            <div class="container cMobile">
+                <div class="row text-center">
+                    <div class="col-md-3 feature_grid1">
+                        <img src="{{ asset('images/pic1.jpg') }}" class="img-responsive MHL" alt=""/>
+                        <h3 class="m_1"style="height: 96px;"><a href="#">Jean-Marc<br>DURRIEU</a></h3>
+                        <p class="m_2">{% trans %}Vidéaste et photographe, <br>Réalise des films documentaires, expérimentaux, reportages, clips pour des compagnies de théatre et groupes de musique...{% endtrans %}</p>
+                        <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
+                    <div class="col-md-3 feature_grid1">
+                        <img src="{{ asset('images/pic2.jpg') }}" class="img-responsive MHL" alt=""/>
+                        <h3 class="m_1"style="height: 96px;"><a href="#">Marie-Helene<br>LAVERGNE</a></h3>
+                        <p class="m_2">{% trans %}Artiste peintre, <br>Expose régulièrement en France ses toiles qu'elle réalise à la peinture acrylique ou à l'huile et anime des ateliers d'art plastique dans des écoles...{% endtrans %}</p>
+                        <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
+                    <div class="col-md-3 feature_grid1">
+                        <img src="{{ asset('images/pic6.jpg') }}" class="img-responsive MHL" alt=""/>
+                        <h3 class="m_1" style="height: 96px;"><a href="#">Monsieur Serge</a></h3>
+                        <p class="m_2">{% trans %}Musicien, chanteur, <br>Songwriter electro blues...{% endtrans %}</p>
+                        <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
+                    <div class="col-md-3 feature_grid2">
+                        <img src="{{ asset('images/pic5.jpg') }}" class="img-responsive MHL" alt=""/>
+                        <h3 class="m_1" style="height: 96px;"><a href="#">{% trans %}Actualités<br>Blog{% endtrans %}</a></h3>
+                        <p class="m_2">{% trans %}Retrouvez toutes nos actualités, <br>nos évenements, nos petits moments partagés...{% endtrans %} </p>
+                        <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="content_white">
+                <h2>{% trans %}Dernières actualités{% endtrans %}</h2>
+                <p>{% trans %}Retrouvez les dernières actualités du site postées{% endtrans %}</p>
+            </div>
+            <div class="testimonial">
+                <div class="row testimonial_top">
+                    <div class="col-md-6">
+                        <ul class="test_box">
+                            <li class="test_img"><img src="images/photo.jpg" class="img-responsive" alt=""/></li>
+                            <li class="test_desc">
+                                <h4><a href="#">Lorem vituperata</a></h4>
+                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
+                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="test_box">
+                            <li class="test_img"><img src="images/photo.jpg" class="img-responsive" alt=""/></li>
+                            <li class="test_desc">
+                                <h4><a href="#">ateum iusto</a></h4>
+                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
+                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                </div>
+                <div class="row testimonial_bottom">
+                    <div class="col-md-6">
+                        <ul class="test_box">
+                            <li class="test_img"><img src="images/pic3.jpg" class="img-responsive" alt=""/></li>
+                            <li class="test_desc">
+                                <h4><a href="#">Vituperata ateum</a></h4>
+                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
+                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <ul class="test_box">
+                            <li class="test_img"><img src="images/pic4.jpg" class="img-responsive" alt=""/></li>
+                            <li class="test_desc">
+                                <h4><a href="#">Appareat vituperat</a></h4>
+                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
+                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
+                            </li>
+                            <div class="clearfix"></div>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}
