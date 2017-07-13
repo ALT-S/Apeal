@@ -8,7 +8,7 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 
 /**
- * ArticleBlogBlog
+ * ArticleBlog
  *
  * @ORM\Table(name="articleBlog")
  * @ORM\Entity(repositoryClass="AppBundle\Repository\ArticleBlogRepository")
@@ -26,7 +26,7 @@ class ArticleBlog
     private $id;
 
     /**
-     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User",inversedBy="articles" )
+     * @ORM\ManyToOne(targetEntity="UserBundle\Entity\User", inversedBy="articles" )
      * @ORM\JoinColumn(nullable=false)
      * @Assert\NotBlank()
      */
@@ -94,6 +94,13 @@ class ArticleBlog
      */
     private $deleted;
 
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="dateEvenement", type="datetime", nullable=true)
+     */
+    private $dateEvenement = null;
+    
     /**
      * @return int
      */
@@ -362,5 +369,21 @@ class ArticleBlog
     public function getPhotoWebPath()
     {
         return $this->getUploadDir().'/'.$this->getId().'.'.$this->getPhotoExtension();
+    }
+
+    /**
+     * @return \DateTime
+     */
+    public function getDateEvenement()
+    {
+        return $this->dateEvenement;
+    }
+
+    /**
+     * @param \DateTime $dateEvenement
+     */
+    public function setDateEvenement($dateEvenement)
+    {
+        $this->dateEvenement = $dateEvenement;
     }
 }

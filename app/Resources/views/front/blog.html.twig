@@ -6,7 +6,8 @@
         <div class="aPropos">
             <h1>{% trans %}Actualités<br>Blog{% endtrans %}</h1>
             <div class="row">
-                <p style=" margin-bottom: 20px; font-size: 130%;text-align: justify;">Retrouvez ici toutes nos
+                <p style=" margin-bottom: 56px; font-size: 145%;text-align: justify; font-weight: 500;
+    text-transform: uppercase; color: #7cc4cc;">Retrouvez ici toutes nos
                     actualitées, nos évenements, nos petits moments partagés... </p>
             </div>
         </div>
@@ -24,7 +25,7 @@
                 <div class="col-lg-1 col-xs-1">
                     {{ article.dateEvenement |date('d/m/Y') }}
                 </div>
-                <article class="col-lg-11 col-xs-11" style="border-left: solid 1px #e4551d;">
+                <article class="col-lg-11 col-xs-11" style="border-left: solid 1px #e4551d; margin-bottom: 40px;">
 
                     <h3>{{ article.title }}</h3>
                     <img src="{{ asset(article.photoWebPath) }}" alt="" width="180" height="200"
