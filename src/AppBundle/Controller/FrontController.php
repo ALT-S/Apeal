@@ -58,11 +58,28 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/Blog", name="blog")
+     * @Route("/Actualités/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="actualites")
      */
-    public function blogAction()
+    public function actualitesAction($page)
     {
-        return $this->render('front/blog.html.twig');
+        $nbNewsParPage = $this->container->getParameter('front_nb_news_par_page');
+        
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('AppBundle:ArticleBlog');
+
+        $listArticles = $repository->findAllPagineEtTrie($page, $nbNewsParPage);
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($listArticles) / $nbNewsParPage),
+            'nomRoute' => 'actualites',
+            'paramsRoute' => array()
+        );
+        
+        return $this->render('front/blog.html.twig', array(
+            'listArticles' => $listArticles,
+            'pagination' => $pagination
+        ));
     }
 
     /**

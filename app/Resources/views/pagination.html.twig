@@ -1,0 +1,41 @@
+{% if pagination.nbPages > 0 %}
+    <ul class="pagination pagination_blc">
+        {% if pagination.page > 1 %}
+            <li>
+                <a  class="dernier-page" href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': 1})|merge(app.request.query)) }}">
+                    1
+                </a>
+            </li>
+            <li>
+                <a class="fleche_page_return" href="{{ path(pagination.nomRoute,
+                pagination.paramsRoute|merge({'page': pagination.page-1})|merge(app.request.query)) }}">
+                    <span class="glyphicon glyphicon-backward fa-lg"></span>
+                </a>
+            </li>
+        {% endif %}
+
+        {# Affichage de toutes les pages entre p-4 et p+4 sauf si < 1 ou > nbPages #}
+        {% for p in range(max(pagination.page-4, 1), min(pagination.page+4, pagination.nbPages)) %}
+            <li {% if p == pagination.page %}class="active color_page_active"{% endif %}>
+                <a href="{{ path(pagination.nomRoute, pagination.paramsRoute|merge({'page': p})|merge(app.request.query)) }}">
+                    {{ p }}
+                </a>
+            </li>
+        {% endfor %}
+
+        {% if pagination.page < pagination.nbPages %}
+            <li>
+                <a class="fleche_page" href="{{ path(pagination.nomRoute,
+                pagination.paramsRoute|merge({'page': pagination.page+1})|merge(app.request.query)) }}">
+                    <span class="glyphicon glyphicon-forward fa-lg"></span>
+                </a>
+            </li>
+            <li>
+                <a class="dernier-page" href="{{ path(pagination.nomRoute,
+                pagination.paramsRoute|merge({'page': pagination.nbPages})|merge(app.request.query)) }}">
+                    {{ pagination.nbPages }}
+                </a>
+            </li>
+        {% endif %}
+    </ul>
+{% endif %}

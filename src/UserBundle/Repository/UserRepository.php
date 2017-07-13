@@ -2,6 +2,7 @@
 
 namespace UserBundle\Repository;
 
+
 /**
  * UserRepository
  *

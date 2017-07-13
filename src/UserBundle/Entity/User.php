@@ -106,7 +106,7 @@ class User implements UserInterface
 
     /**
      * @var
-     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ArticleBlog", mappedBy="author", fetch="EXTRA_LAZY")
+     * @ORM\OneToMany(targetEntity="AppBundle\Entity\ArticleBlog",mappedBy="author", fetch="EXTRA_LAZY")
      */
     private $articles;
     
@@ -357,5 +357,36 @@ class User implements UserInterface
     public function setTokenRegenerationMotDePasse($tokenRegenerationMotDePasse)
     {
         $this->tokenRegenerationMotDePasse = $tokenRegenerationMotDePasse;
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->articles = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Add article
+     *
+     * @param \AppBundle\Entity\ArticleBlog $article
+     *
+     * @return User
+     */
+    public function addArticle(\AppBundle\Entity\ArticleBlog $article)
+    {
+        $this->articles[] = $article;
+
+        return $this;
+    }
+
+    /**
+     * Remove article
+     *
+     * @param \AppBundle\Entity\ArticleBlog $article
+     */
+    public function removeArticle(\AppBundle\Entity\ArticleBlog $article)
+    {
+        $this->articles->removeElement($article);
     }
 }

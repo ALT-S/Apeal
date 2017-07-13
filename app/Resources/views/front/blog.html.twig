@@ -6,8 +6,41 @@
         <div class="aPropos">
             <h1>{% trans %}Actualités<br>Blog{% endtrans %}</h1>
             <div class="row">
-                <p>Retrouvez ici toutes nos actualitées, nos évenements, nos petits moments partagés... </p>
+                <p style=" margin-bottom: 20px; font-size: 130%;text-align: justify;">Retrouvez ici toutes nos
+                    actualitées, nos évenements, nos petits moments partagés... </p>
             </div>
         </div>
+    </div>
+    <div class="container">
+    {% if listArticles is not empty %}
+        <div>
+            <div class="row">
+                {% for article in listArticles %}
+                {% if loop.index0 % 2 == 0 %}
+            </div>
+            <div class="row">
+                {% endif %}
+
+                <div class="col-lg-1 col-xs-1">
+                    {{ article.dateEvenement |date('d/m/Y') }}
+                </div>
+                <article class="col-lg-11 col-xs-11" style="border-left: solid 1px #e4551d;">
+
+                    <h3>{{ article.title }}</h3>
+                    <img src="{{ asset(article.photoWebPath) }}" alt="" width="180" height="200"
+                         style="float: left; margin-right: 10px;">
+                    <p>{{ article.content|striptags| truncate(300) | raw }}</p>
+                    <p><a href="{{ path('actualites') }}" style="float: right;">{% trans %}Lire la
+                            suite...{% endtrans %}</a></p>
+
+                </article>
+
+                {% endfor %}
+            </div><!-- row -->
+        </div>
+        {% include 'pagination.html.twig' %}
+    {% else %}
+        <p class="aucun">{% trans %}Il n'y a aucune actualitée pour l'instant.{% endtrans %}</p>
+    {% endif %}
     </div>
 {% endblock %}

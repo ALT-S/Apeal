@@ -60,3 +60,17 @@ services:
         tags:
             - { name: kernel.event_subscriber }
 
+    app.manager.mailReinit:
+        class: UserBundle\Manager\MailReinitMdpManager
+        arguments: ["@templating.engine.twig", "%mailer_user%", "@swiftmailer.mailer"]
+        public: true
+
+    app.form.ModifMdp:
+        class: UserBundle\Form\ModifMdp
+        arguments:
+            - "@security.password_encoder"
+
+    twig.extension.text:
+        class: Twig_Extensions_Extension_Text
+        tags:
+            - { name: 'twig.extension' }
