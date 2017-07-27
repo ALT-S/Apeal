@@ -1,0 +1,48 @@
+{% extends '::layout-back.html.twig' %}
+
+{% set element = form.vars.value %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="navbar-brand" href="{{ path('admin_mhl_dashboard') }}" style="padding-bottom:0 ;padding-left: 0">
+                {% trans %}Dashboard MH{% endtrans %}
+            </a>
+            <span class=" glyphicon glyphicon-arrow-right" style="top: 18px;    float: left;"></span>
+            <a class="{% if app.request.attributes.get('_route') == 'admin_mhl_creation_element_photo' %}navbar-brand{% endif %}
+    " href="{{ path('admin_mhl_creation_element_photo' , {id: categorie.id} )}} " style="color: red">
+                {% trans %}Création d'un élément "photo"{% endtrans %}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Création d'un élément photo"{% endtrans %}</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row" style="padding-top: 45px">
+        <div class="col-lg-6">
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            <div class="form-group">
+                {{ form_label(form.title, "Titre :" ) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.title) }}
+                    {{ form_errors(form.title) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.file, "Photo :" ) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.file) }}
+                    {{ form_errors(form.file) }}
+                </div>
+            </div>
+
+            {{ form_rest(form) }}
+
+            {{ form_end(form) }}
+        </div>
+    </div>
+{% endblock %}

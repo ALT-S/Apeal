@@ -1,0 +1,78 @@
+{% extends '::layout-back.html.twig' %}
+
+{% set element = form.vars.value %}
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="navbar-brand" href="{{ path('admin_jmd_dashboard') }}" style="padding-bottom:0 ;padding-left: 0">
+                {% trans %}Dashboard JM{% endtrans %}
+            </a>
+            <span class=" glyphicon glyphicon-arrow-right" style="top: 18px;    float: left;"></span>
+            <a class="{% if app.request.attributes.get('_route') == 'admin_jmd_edit_element' %}navbar-brand{% endif %}
+    " href="{{ path('admin_jmd_edit_element',{id: element.id}) }}" style="color: red">
+                {% trans %}Modification d'un élément{% endtrans %}</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Modifier la {% endtrans %}{{ element.type }} "{{ element.title }}"</h2>
+        </div>
+    </div>
+    <hr>
+    <div class="row" style="padding-top: 45px">
+        <div class="col-lg-6">
+
+            {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+
+            <div class="form-group">
+                {{ form_label(form.title, "Titre :" ) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.title) }}
+                    {{ form_errors(form.title) }}
+                </div>
+            </div>
+            <div class="form-group">
+                {{ form_label(form.description, "Description :" ) }}
+                <div class="col-sm-10">
+                    {{ form_widget(form.description, {'id' : 'summernote'}) }}
+                    {{ form_errors(form.description) }}
+                </div>
+            </div>
+            {% if element.type == 'video' %}
+                <div class="form-group">
+                    {{ form_label(form.url, "Vidéo :" ) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.url) }}
+                        {{ form_errors(form.url) }}
+                    </div>
+                </div>
+            {% endif %}
+            {% if element.type == 'photo' %}
+                <div class="form-group">
+                    {{ form_label(form.file, "Photo :" ) }}
+                    <div class="col-sm-10">
+                        {{ form_widget(form.file) }}
+                        {{ form_errors(form.file) }}
+                    </div>
+                </div>
+            {% endif %}
+            {{ form_rest(form) }}
+
+            {{ form_end(form) }}
+        </div>
+
+        <div class="col-lg-6">
+            {% if element.type == 'video' and element.yTCode is not null %}
+                <div class="embed-responsive embed-responsive-16by9">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/{{ element.yTCode }}"></iframe>
+                </div>
+            {% elseif element.type == 'photo' %}
+                <img class="img-responsive" src="{{ asset('upload/photos/jmd/' ~ element.file.filename) }}"
+                     alt="{{ element.title }}"/>
+            {% endif %}
+        </div>
+    </div>
+{% endblock %}

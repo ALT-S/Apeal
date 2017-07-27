@@ -1,0 +1,22 @@
+<!-- Modal -->
+
+<div class="modal fade" id="MHLlaModal-{{ element.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h2></h2>
+
+                <div class="modal-body">
+                    <div>{{ element.title }}</div>
+
+                    <img class="img-responsive" src="{{ asset('upload/photos/mhl/' ~ element.file) }}"
+                         alt="{{ element.title }}"/>
+
+
+                </div><!-- /.modal-body -->
+            </div><!-- /.modal-header -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->

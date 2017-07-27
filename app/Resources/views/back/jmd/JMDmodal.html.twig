@@ -1,0 +1,29 @@
+<!-- Modal -->
+
+<div class="modal fade" id="JMDlaModal-{{ element.id }}">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">x</button>
+                <h2></h2>
+
+                <div class="modal-body">
+
+                    {% if element.type == 'video' and element.yTCode is not null %}
+                        <div class="embed-responsive embed-responsive-16by9">
+                            <iframe class="embed-responsive-item"
+                                    src="https://www.youtube.com/embed/{{ element.yTCode }}"></iframe>
+                        </div>
+                    {% elseif element.type == 'photo' %}
+                        <div>{{ element.title }}</div>
+                        <img class="img-responsive" src="{{ asset('upload/photos/jmd/' ~ element.file) }}"
+                             alt="{{ element.title }}"/>
+                        <div>{{ element.description |raw }}</div>
+                    {% endif %}
+
+                </div><!-- /.modal-body -->
+            </div><!-- /.modal-header -->
+        </div><!-- /.modal-content -->
+    </div><!-- /.modal-dialog -->
+
+</div><!-- /.modal -->

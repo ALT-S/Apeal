@@ -1,0 +1,57 @@
+{% extends '::layout-back.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Tableau de bord{% endtrans %}</h2>
+        </div>
+    </div>
+    <p style="font-size: 20px; color: #00aced">
+        {% trans %}Bienvenu sur le dashboard de Monsieur Serge !{% endtrans %}</p>
+    <hr>
+    <div class="row">
+        <div class="col-xs-6">
+            <button>
+                <span style="margin-right: 5px" class="glyphicon glyphicon-edit"></span>
+                <a href="{{ path('admin_ms_creation_musique') }}">
+                    {% trans %}Ajouter une musique{% endtrans %}
+                </a>
+            </button>
+        </div>
+    </div>
+    <p style="margin-top: 40px">{% trans %}Listes des musique{% endtrans %}</p>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td style="width:50px;">#</td>
+            <td>{% trans %}Titre{% endtrans %}</td>
+            <td style="width:100px; text-align: center;">&nbsp;</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for musique in musiques %}
+            <tr>
+                <td>{{ musique.id }}</td>
+                <td><a href="{{ path('dashboard_editMusique', {id: musique.id}) }}">{{ musique.title }}</a></td>
+
+                <td>
+                    <a href="{{ path('dashboard_editMusique', {id: musique.id}) }}">
+                        <span style="color: #428bca; margin-left: 10px" class="glyphicon glyphicon-edit"
+                              title="Modifier l'élément"></span>
+                    </a>
+
+                    <a href="{{ path('admin_ms_supprimer_musique', {id: musique.id}) }}">
+                        <span style="color: red; margin-left: 10px" class=" glyphicon glyphicon-trash icone"
+                              title="Supprimer l'élément"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}

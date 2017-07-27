@@ -1,0 +1,34 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }}{% trans %} - Marie-Hélène Lavergne{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="aPropos">
+            <h1>{% trans %}Marie-Hélène LAVERGNE{% endtrans %}</h1>
+            <div class="row">
+            </div>
+        </div>
+
+        <h2>{{ categorie.title| date('d-m-Y') }}</h2>
+
+        <div class="row">
+            {% for element in elements %}
+            {% if loop.index0 %4 == 0 %}
+        </div>
+        <div class="row" style="margin-bottom: 10px;">
+            {% endif %}
+            <div class="col-lg-3">
+                <div style=" height: 138px;overflow: hidden;">
+                    <a data-toggle="modal" href="#MHLlaModal-{{ element.id }}">
+                        <img src="{{ asset('upload/photos/mhl/' ~ element.file) }}" class="img-responsive"/>
+                    </a>
+                </div>
+                {% include 'back/mhl/MHLmodal.html.twig' %}
+                <p class="text-center"
+                   style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">
+                    {{ element.title }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

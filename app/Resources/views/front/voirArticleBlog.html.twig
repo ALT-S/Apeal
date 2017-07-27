@@ -1,0 +1,60 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }}{% trans %} - Actualités / Blog{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="aPropos">
+
+            <h2>{{ article.title }}</h2>
+            <hr>
+            <div class="row miniature article" style="margin-bottom: 35px;margin-top: 30px;">
+                <div class="col-md-3 col-xs-12 miniature">
+                    <img src="{{ asset('upload/blog/' ~ article.file) }}" alt="" width="277" height="350"
+                         style="float: left; margin-right: 10px;"/>
+                    <div class="row">
+                        <div class="col-md-12 col-xs-12 ">
+                            <p class="articleB" style="margin-top: 20px"><strong>{% trans %}Date de
+                                    l'événement: {% endtrans %}</strong> {{ article.dateEvenement|date('d/m/Y') }}</p>
+                            <p class="articleB" style="margin-top: 5px"><strong>{% trans %}
+                                    Auteur: {% endtrans %}</strong> {{ article.author.username }}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="col-md-6 col-xs-12">
+                    <p class="article-content">{{ article.content| raw }}</p>
+                </div>
+
+
+                <div class=" col-md-3 col-xs-12 miniature">
+                    {% for art in listArticles %}
+
+                        <div class="row miniature" style="margin-bottom: 22px;">
+                            <div class="col-md-12 col-xs-12" style="padding-left: 0">
+                                <h3>{{ art.title }}</h3>
+                            </div>
+                            <div class="row miniature">
+                                <div class="col-md-5 col-xs-12">
+                                    <img style="float: left; margin-right: 10px;"
+                                         src="{{ asset('upload/blog/' ~ art.file) }}" alt=""
+                                         width="100" height="125"/>
+                                </div>
+
+                                <div class="col-md-7 col-xs-12">
+                                    <p class="content">{{ art.content|striptags | truncate(80)| raw }}</p>
+                                    <p><a href="{{ path('actualite', {id: art.id}) }}" style="float: right;">
+                                            {% trans %} Lire la suite...{% endtrans %}</a>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

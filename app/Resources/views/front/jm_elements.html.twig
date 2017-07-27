@@ -1,0 +1,53 @@
+{% extends '::layout.html.twig' %}
+{% block title %}{{ parent() }}{% trans %} - Jean-Marc Durrieu{% endtrans %}{% endblock %}
+
+{% block body %}
+    <div class="container">
+        <div class="aPropos">
+            <h1>{% trans %}Jean-Marc DURRIEU{% endtrans %}</h1>
+        </div>
+
+        <h2>{{ categorie.title }}</h2>
+
+        <div class="row">
+            {% for element in elements %}
+                {% if loop.index0 %4 == 0 %}
+                    </div>
+                    <div class="row">
+            {% endif %}
+
+            {% if element.type == 'photo' %}
+
+            <div class="col-lg-3">
+                <div style=" height: 138px;overflow: hidden;">
+                    <a data-toggle="modal" href="#JMDlaModal-{{ element.id }}">
+                        <img src="{{ asset('upload/photos/jmd/' ~ element.file) }}" class="img-responsive"/>
+                    </a>
+                </div>
+                {% include 'back/jmd/JMDmodal.html.twig' %}
+                <p class="text-center"
+                   style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">
+                    {{ element.title }}</p>
+            </div>
+
+            {% elseif element.type == 'video' %}
+                {% if loop.index0 %1 == 0 %}
+                </div>
+                <div class="row">
+                {% endif %}
+            <div class="col-lg-6" style="margin-top: 5px">
+                <div class="embed-responsive embed-responsive-4by3">
+                    <iframe class="embed-responsive-item"
+                            src="https://www.youtube.com/embed/{{ element.yTCode }}"></iframe>
+                </div>
+                <p class="text-center"
+                   style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px; margin-bottom: 10px">{{ element.title }}</p>
+            </div>
+            <div class="col-lg-6 " style="margin-top: 10px; margin-bottom: 25px">{{ element.description |raw }}</div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+
+
+{% endblock %}

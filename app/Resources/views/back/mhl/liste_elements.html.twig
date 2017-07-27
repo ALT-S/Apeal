@@ -1,0 +1,70 @@
+{% extends '::layout-back.html.twig' %}
+
+
+{% block body %}
+    <div class="row">
+        <div class="col-lg-12">
+            <a class="navbar-brand" href="{{ path('admin_mhl_dashboard') }}" style="padding-bottom:0 ;padding-left: 0">
+                {% trans %}Dashboard MH{% endtrans %}
+            </a>
+            <span class=" glyphicon glyphicon-arrow-right" style="top: 18px;    float: left;"></span>
+            <a class="{% if app.request.attributes.get('_route') == 'admin_mhl_liste_elements_par_categorie' %}navbar-brand{% endif %}
+    " href="{{ path('admin_mhl_liste_elements_par_categorie',{id: categorie.id}) }} " style="color: red">
+                {% trans %}Liste des éléments de la catégorie{% endtrans %}</a>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Catégorie {% endtrans %} {{ categorie.title | date('d-m-Y') }} {% trans %}
+                [Modifier]{% endtrans %}</h2>
+        </div>
+    </div>
+    <hr>
+
+    <div class="row">
+        <div class="col-xs-6">
+            <button><span style="margin-right: 5px" class="glyphicon glyphicon-picture"></span>
+                <a href="{{ path('admin_mhl_creation_element_photo', {id: categorie.id}) }}">
+                    {% trans %}Ajouter une nouvelle photo{% endtrans %}</a>
+            </button>
+        </div>
+    </div>
+    <hr>
+
+    <p>{% trans %}Listing des élements composant cette catégorie :{% endtrans %}</p>
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td style="width:50px;">#</td>
+            <td>{% trans %}Nom{% endtrans %}</td>
+            <td style="width:100px; text-align: center;">&nbsp;</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for element in elements %}
+            <tr>
+                <td>{{ element.id }}</td>
+                <td><a href="{{ path('admin_mhl_edit_element', {id: element.id}) }}">{{ element.title }}</a></td>
+                <td>
+                    <a data-toggle="modal" href="#MHLlaModal-{{ element.id }}">
+                        <span style="color: #5433a0" class=" glyphicon glyphicon-eye-open icone"
+                              title="Voir l'élément"></span>
+                    </a>
+                    {% include 'back/mhl/MHLmodal.html.twig' %}
+
+                    <a href="{{ path('admin_mhl_edit_element', {id: element.id}) }}">
+                        <span style="color: #428bca; margin-left: 10px" class=" 	glyphicon glyphicon-edit"
+                              title="Modifier l'élément"></span>
+                    </a>
+
+                    <a href="{{ path('admin_mhl_supprimer_element', {id: element.id}) }}">
+                        <span style="color: red; margin-left: 10px" class=" glyphicon glyphicon-trash icone"
+                              title="Supprimer l'élément"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

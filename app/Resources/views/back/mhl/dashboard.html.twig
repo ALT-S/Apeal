@@ -1,0 +1,50 @@
+{% extends '::layout-back.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Tableau de bord{% endtrans %}</h2>
+        </div>
+    </div>
+    <p style="font-size: 20px; color: #00aced">{% trans %}Bienvenu sur le dashboard de Marie-Hélène !{% endtrans %}</p>
+    <hr>
+    <a href="{{ path('admin_mhl_creation_categorie') }}">{% trans %}Ajouter une nouvelle catégorie{% endtrans %}</a>
+
+    <h3>{% trans %}Listing des catégories{% endtrans %}</h3>
+    <table class="table">
+        <thead>
+        <tr>
+            <td style="width:50px;">#</td>
+            <td>{% trans %}Nom{% endtrans %}</td>
+            <td style="width:50px;">&nbsp;</td>
+            <td style="width:100px;">&nbsp;</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for category in categories %}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>
+                    <a href="{{ path('admin_mhl_liste_elements_par_categorie', {id: category.id}) }}">{{ category.title | date('d-m-Y')}}</a>
+                </td>
+                <td>
+                    {% if category.file is not null %}
+                        <img style="width:50px;" src="{{ asset('upload/photos/mhl/' ~ category.file) }}"
+                             alt="{{ category.title | date('d-m-Y') }}"/>
+                    {% endif %}
+                </td>
+                <td style="text-align: center;">
+                    <a href="{{ path('admin_mhl_edit_categorie', {id: category.id}) }}">
+                        <span style="color: #428bca; margin-left: 10px" class=" 	glyphicon glyphicon-edit" title="Modifier la catégorie"></span>
+                    </a>
+                    <a href="{{ path('admin_mhl_supprimer_categorie', {id: category.id}) }}">
+                        <span style="color: red; margin-left: 10px" class=" glyphicon glyphicon-trash icone" title="Supprimer la categorie"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}

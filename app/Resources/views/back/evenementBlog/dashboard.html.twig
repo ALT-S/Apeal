@@ -1,0 +1,54 @@
+{% extends '::layout-back.html.twig' %}
+
+
+{% block body %}
+
+    <div class="row">
+        <div class="col-lg-12">
+            <h2>{% trans %}Tableau de bord{% endtrans %}</h2>
+        </div>
+    </div>
+    <p style="font-size: 20px; color: #00aced">{% trans %}Bienvenu sur le dashboard Evènement / Blog!{% endtrans %}</p>
+    <hr>
+    <div class="row">
+        <div class="col-xs-6">
+            <button><span style="margin-right: 5px" class="glyphicon glyphicon-edit">
+
+                </span><a href="{{ path('dashboard_redigerActualite') }}">
+                    {% trans %}Rédiger un évènement{% endtrans %}</a></button>
+        </div>
+    </div>
+    <p style="margin-top: 40px">{% trans %}Listes des évènements / Blog{% endtrans %}</p>
+
+
+    <table class="table">
+        <thead>
+        <tr>
+            <td style="width:50px;">#</td>
+            <td>{% trans %}Titre{% endtrans %}</td>
+            <td style="width:100px; text-align: center;">&nbsp;</td>
+        </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td>{{ article.id }}</td>
+                <td><a href="{{ path('dashboard_editArticle', {id: article.id}) }}">{{ article.title }}</a></td>
+
+                <td>
+                    <a href="{{ path('dashboard_editArticle', {id: article.id}) }}">
+                        <span style="color: #428bca; margin-left: 10px" class="glyphicon glyphicon-edit"
+                              title="Modifier l'élément"></span>
+                    </a>
+
+                    <a href="{{ path('admin_supprimer_article', {id: article.id}) }}">
+                        <span style="color: red; margin-left: 10px" class=" glyphicon glyphicon-trash icone"
+                              title="Supprimer l'élément"></span>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+{% endblock %}
