@@ -193,7 +193,7 @@ a.banner-btn span:hover {
 }
 .feature_grid1 {
     width: 23.5%;
-    margin-right: 2em;
+    margin-right: 2.5%;
     border-right: 1px solid #E6E6E6;
     padding: 4em 2em 4em 0;
 }
@@ -315,6 +315,16 @@ ul.test_box li.test_desc h4 a {
     text-decoration: none;
 }
 ul.test_box li.test_desc h4 a:hover {
+    color: #e4551d;
+}
+
+ul.test_box h4 a {
+    font-size: 0.9em;
+    font-weight: 600;
+    color: #666;
+    text-decoration: none;
+}
+ul.test_box h4 a:hover {
     color: #e4551d;
 }
 ul.test_box li.test_desc p {
@@ -839,7 +849,11 @@ ul.sidebar li a {
         height: initial;
     }
 }
-
+@media (max-width:991px) {
+    p.m_2 {
+        height: initial;
+    }
+}
 @media (max-width:640px) {
     .content_white p {
         font-size: 1.3em;

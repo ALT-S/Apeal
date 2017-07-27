@@ -24,24 +24,24 @@
         <div class="featured_content" >
             <div class="container cMobile">
                 <div class="row text-center">
-                    <div class="col-md-3 feature_grid1">
+                    <div class="col-md-3 col-sm-12 feature_grid1">
                         <img src="{{ asset('images/pic1.jpg') }}" class="img-responsive MHL" alt=""/>
-                        <h3 class="m_1"style="height: 96px;"><a href="#">Jean-Marc<br>DURRIEU</a></h3>
+                        <h3 class="m_1"style="height: 96px;"><a href="{{ path('page_JM') }}">Jean-Marc<br>DURRIEU</a></h3>
                         <p class="m_2">{% trans %}Vidéaste et photographe, <br>Réalise des films documentaires, expérimentaux, reportages, clips pour des compagnies de théatre et groupes de musique...{% endtrans %}</p>
                         <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
-                    <div class="col-md-3 feature_grid1">
+                    <div class="col-md-3 col-sm-12 feature_grid1">
                         <img src="{{ asset('images/pic2.jpg') }}" class="img-responsive MHL" alt=""/>
-                        <h3 class="m_1"style="height: 96px;"><a href="#">Marie-Helene<br>LAVERGNE</a></h3>
+                        <h3 class="m_1"style="height: 96px;"><a href="{{ path('page_MH') }}">Marie-Helene<br>LAVERGNE</a></h3>
                         <p class="m_2">{% trans %}Artiste peintre, <br>Expose régulièrement en France ses toiles qu'elle réalise à la peinture acrylique ou à l'huile et anime des ateliers d'art plastique dans des écoles...{% endtrans %}</p>
                         <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
-                    <div class="col-md-3 feature_grid1">
+                    <div class="col-md-3 col-sm-12 feature_grid1">
                         <img src="{{ asset('images/pic6.jpg') }}" class="img-responsive MHL" alt=""/>
-                        <h3 class="m_1" style="height: 96px;"><a href="#">Monsieur Serge</a></h3>
+                        <h3 class="m_1" style="height: 96px;"><a href="{{ path('page_serge') }}">Monsieur <br> Serge</a></h3>
                         <p class="m_2">{% trans %}Musicien, chanteur, <br>Songwriter electro blues...{% endtrans %}</p>
                         <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
-                    <div class="col-md-3 feature_grid2">
+                    <div class="col-md-3 col-sm-12 feature_grid2">
                         <img src="{{ asset('images/pic5.jpg') }}" class="img-responsive MHL" alt=""/>
-                        <h3 class="m_1" style="height: 96px;"><a href="#">{% trans %}Actualités<br>Blog{% endtrans %}</a></h3>
+                        <h3 class="m_1" style="height: 96px;"><a href="{{ path('actualites') }}">{% trans %}Actualités<br>Blog{% endtrans %}</a></h3>
                         <p class="m_2">{% trans %}Retrouvez toutes nos actualités, <br>nos évenements, nos petits moments partagés...{% endtrans %} </p>
                         <a href="#" class="feature_btn">{% trans %}Voir plus{% endtrans %}</a></div>
                 </div>
@@ -54,52 +54,82 @@
             </div>
             <div class="testimonial">
                 <div class="row testimonial_top">
-                    <div class="col-md-6">
-                        <ul class="test_box">
-                            <li class="test_img"><img src="images/photo.jpg" class="img-responsive" alt=""/></li>
-                            <li class="test_desc">
-                                <h4><a href="#">Lorem vituperata</a></h4>
-                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
-                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
-                            </li>
-                            <div class="clearfix"></div>
-                        </ul>
-                    </div>
-                    <div class="col-md-6">
-                        <ul class="test_box">
-                            <li class="test_img"><img src="images/photo.jpg" class="img-responsive" alt=""/></li>
-                            <li class="test_desc">
-                                <h4><a href="#">ateum iusto</a></h4>
-                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
-                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
-                            </li>
-                            <div class="clearfix"></div>
-                        </ul>
-                    </div>
+                    {% if derniereMS is not null %}
+                        <div class="col-md-6">
+                            <ul class="test_box">
+
+                                <li class="test_desc" style="width:100%">
+                                    <h4><a href="{{ path('page_serge') }}">{{ derniereMS.title }}</a></h4>
+                                    <iframe width="100%" height="166" scrolling="no" frameborder="no"
+                                            src="https://w.soundcloud.com/player/?url={{ derniereMS.lien }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false">
+
+                                    </iframe>
+
+                                </li>
+
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if derniereBlog is not null %}
+                        <div class="col-md-6">
+                            <ul class="test_box">
+                                <h4><a href="{{ path('actualite', {id: derniereBlog.id}) }}">{{ derniereBlog.title }}</a></h4>
+                                <li class="test_img">
+
+                                    <img src="{{ asset('upload/blog/' ~ derniereBlog.file) }}" class="img-responsive" alt=""/>
+                                </li>
+                                <li class="test_desc">
+
+                                    <p>{{ derniereBlog.content | striptags | truncate(200) }}</p>
+                                </li>
+
+                            </ul>
+                        </div>
+                    {% endif %}
+
+
                 </div>
+
                 <div class="row testimonial_bottom">
+
+                    {% if derniereJMD is not null %}
+                        <div class="col-md-6">
+                            <ul class="test_box">
+                                <li class="test_img">
+                                    {% if derniereJMD.type == 'video' and derniereJMD.yTCode is not null %}
+                                        <div class="embed-responsive embed-responsive-16by9">
+                                            <iframe class="embed-responsive-item"
+                                                    src="https://www.youtube.com/embed/{{ derniereJMD.yTCode }}"></iframe>
+                                        </div>
+                                    {% elseif derniereJMD.type == 'photo' %}
+                                        <img class="img-responsive" src="{{ asset('upload/photos/jmd/' ~ derniereJMD.file) }}"
+                                             alt="{{ derniereJMD.title }}"/>
+                                    {% endif %}
+                                </li>
+                                <li class="test_desc">
+                                    <h4><a href="#">Jean-Marc Durrieu - {{ derniereJMD.title }}</a></h4>
+                                    <p>{{ derniereJMD.description | striptags | truncate(200)  }}</p>
+                                </li>
+
+                            </ul>
+                        </div>
+                    {% endif %}
+                    {% if derniereMHL is not null %}
                     <div class="col-md-6">
                         <ul class="test_box">
-                            <li class="test_img"><img src="images/pic3.jpg" class="img-responsive" alt=""/></li>
-                            <li class="test_desc">
-                                <h4><a href="#">Vituperata ateum</a></h4>
-                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
-                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
+                            <li class="test_img">
+                                <img class="img-responsive" src="{{ asset('upload/photos/mhl/' ~ derniereMHL.file) }}"
+                                      alt="{{ derniereMHL.title }}"/>
                             </li>
-                            <div class="clearfix"></div>
+                            <li class="test_desc">
+                                <h4><a href="#">Marie-Helene Lavergne - {{ derniereMHL.title }}</a></h4>
+                                <p>Catégorie : {{ derniereMHL.categorie.title | date('d-m-Y') }}</p>
+                            </li>
+
                         </ul>
                     </div>
-                    <div class="col-md-6">
-                        <ul class="test_box">
-                            <li class="test_img"><img src="images/pic4.jpg" class="img-responsive" alt=""/></li>
-                            <li class="test_desc">
-                                <h4><a href="#">Appareat vituperat</a></h4>
-                                <p>Vel ad aliquid copiosae, cum id impetus tincidunt, solum option laoreet ei quo. No
-                                    cum agam appareat vituperata ateum iusto paulo dignissim.</p>
-                            </li>
-                            <div class="clearfix"></div>
-                        </ul>
-                    </div>
+                    {% endif %}
+
                 </div>
             </div>
         </div>

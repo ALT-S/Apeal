@@ -1,5 +1,5 @@
 {% extends '::layout.html.twig' %}
-{% block title %}{{ parent() }}{% trans %} - Blog{% endtrans %}{% endblock %}
+{% block title %}{{ parent() }}{% trans %} - Actualités / Blog{% endtrans %}{% endblock %}
 
 {% block body %}
     <div class="container">
@@ -7,8 +7,8 @@
             <h1>{% trans %}Actualités<br>Blog{% endtrans %}</h1>
             <div class="row">
                 <p style=" margin-bottom: 56px; font-size: 145%;text-align: justify; font-weight: 500;
-    text-transform: uppercase; color: #7cc4cc;">Retrouvez ici toutes nos
-                    actualitées, nos évenements, nos petits moments partagés... </p>
+    text-transform: uppercase; color: #7cc4cc;">{% trans %}Retrouvez ici toutes nos
+                    actualités, nos évenements, nos petits moments partagés... {% endtrans %}</p>
             </div>
         </div>
     </div>
@@ -22,19 +22,19 @@
             <div class="row">
                 {% endif %}
 
-                <div class="col-lg-1 col-xs-1">
+                <div class="col-lg-1 col-xs-12">
                     {{ article.dateEvenement |date('d/m/Y') }}
                 </div>
-                <article class="col-lg-11 col-xs-11" style="border-left: solid 1px #e4551d; margin-bottom: 40px;">
+                <div class="col-lg-11 col-xs-12" style="border-left: solid 1px #e4551d; margin-bottom: 40px;">
 
                     <h3>{{ article.title }}</h3>
-                    <img src="{{ asset(article.photoWebPath) }}" alt="" width="180" height="200"
+                    <img src="{{ asset('upload/blog/' ~ article.file) }}" alt="" width="180" height="200"
                          style="float: left; margin-right: 10px;">
                     <p>{{ article.content|striptags| truncate(300) | raw }}</p>
-                    <p><a href="{{ path('actualites') }}" style="float: right;">{% trans %}Lire la
+                    <p><a href="{{ path('actualite', {id: article.id}) }}" style="float: right;">{% trans %}Lire la
                             suite...{% endtrans %}</a></p>
 
-                </article>
+                </div>
 
                 {% endfor %}
             </div><!-- row -->

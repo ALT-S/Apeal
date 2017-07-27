@@ -19,9 +19,9 @@ Home: Home
 Blog: Blog
 'Liens amis:': 'Friends Links:'
 'Richard Volante - Photos': 'Richard Volante - Photos'
-'Richard Volante - Edition': '__Richard Volante - Edition'
+'Richard Volante - Edition': 'Richard Volante - Edition'
 'Monsieur Serge - Musique': 'Monsieur Serge - Music'
-'Liens autre - Dessinatrice': '__Liens autre - Dessinatrice'
+'Liens autre - Dessinatrice': 'Other Links - Designer'
 Apeal-site: Apeal-site
 'Contact APEAL !': 'Contact APEAL !'
 'De :': 'From  :'
@@ -52,3 +52,63 @@ Message: Message
 'Réinitialisation du mot de passe': 'Reset the password'
 '- Demande de réinitialisation de mot de passe': '- Ask for the password reset'
 'Demande de réinitialisation du mot de passe': 'Ask for the password reset'
+'Tableau de bord': Dashboard
+'Bienvenu sur le dashboard Evènement / Blog!': 'Welcome on the dashboard News / Blog !'
+'Rédiger un évènement': 'Write an event'
+'Listes des évènements / Blog': 'News Lists / Blog'
+Titre: Title
+'Modifier l'' évènement</span> :': 'Edit the event</span> :'
+Enregistrer: Register
+'Créer un évènement</span> :': 'Create an event</span> :'
+'Création d''une catégorie"': 'Creating a Category "'
+'Création d''un élément "photo"': 'Creating a ''"photo"'' item'
+'Création d''un élément "vidéo"': 'Creating a ''"video"'' element'
+'Bienvenu sur le dashboard de Jean-Marc !': 'Welcome to Jean-Marc''s dashboard !'
+'Ajouter une nouvelle catégorie': 'Add a new category'
+'Listing des catégories': Categories
+Nom: Name
+'Modifier la catégorie': 'Edit category'
+'Modifier la': 'Edit the'
+Catégorie: Category
+'[Modifier]': '[Edit]'
+'Ajouter une nouvelle photo': 'Add new photo'
+'Ajouter une nouvelle vidéo': 'Add a new video'
+'Listing des élements composant cette catégorie :': 'Listing of elements in this category :'
+Description: Description
+Type: Type
+'Création d''un élément photo"': 'Creating a Photo Item"'
+'Bienvenu sur le dashboard de Marie-Hélène !': 'Welcome to Marie-Hélène''s dashboard !'
+'Modifier la photo': 'Change photo'
+'Ajout d''une Musique"': 'Adding a Music'
+'Bienvenu sur le dashboard de Monsieur Serge !': 'Welcome to Mr. Serge''s dashboard !'
+'Ajouter une musique': 'Add music'
+'Listes des musique': 'Music Lists'
+'Modifier la musique</span> :': 'Edit Music</span> :'
+"APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;\">\n                        A Prendre Et A l'Essai </span> <br>\n                        Association dont l'objectif est de promouvoir le travail\n                        d'artistes.": "APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;\">\n                        A Prendre Et A l'Essai </span> <br>\n Association whose objective is to promote \n                        the work of artists."
+'Retrouvez les dernières actualités postées du site': 'Find the latest news posted from the site'
+'- Actualités / Blog': '- News / Blog'
+"Retrouvez ici toutes nos\n                    actualitées, nos évenements, nos petits moments partagés...": "Find here all our news,\n                    our events, our little moments shared ..."
+"Lire la\n                            suite...": "Read\n                            more..."
+'Il n''y a aucune actualitée pour l''instant.': 'There is no news for the moment.'
+'- Marie-Hélène Lavergne': '- Marie-Hélène Lavergne'
+'Marie-Hélène LAVERGNE': 'Marie-Hélène LAVERGNE'
+'Il n''y a aucune musique pour l''instant.': 'There is no music for the moment.'
+"Date de\n                                    création:": "Creation\n                                    date :"
+'Auteur:': 'Author:'
+'Lire la suite...': 'Read more...'
+Déconnexion: 'Sign Out'
+'Dashboard JM': 'Dashboard JM'
+'Création d''une nouvelle catégorie': 'Creating a new category'
+'Modification d''une catégorie': 'Changing a Category'
+'Modification d''un élément': 'Editing an Item'
+'Liste des éléments de la catégorie': 'List of items in the category'
+'Dashboard MH': 'Dashboard MH'
+'Dashboard MS': 'Dashboard MS'
+'Ajout d''une Musique': 'Adding a Music'
+'Modification d''une musique': 'Edit Music'
+"APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;\">\n                        A Prendre Et A L'Essai </span> <br>\n                        Association dont l'objectif est de promouvoir le travail\n                        d'artistes.": "__APEAL, <span style=\"margin-left: 9px;color: #7cc4cc;font-weight: bold;\">\n                        A Prendre Et A L'Essai </span> <br>\n                        Association whose objective is to promote the work\n                         of artists."
+"Retrouvez ici toutes nos\n                    actualités, nos évenements, nos petits moments partagés...": "Find here all our news,\n                     our events, our little moments shared ..."
+"Date de\n                                    l'événement:": "Event\n                                    date:"
+'Dashboard Blog': 'Dashboard Blog'
+'Modification d''un évènement': 'Changing an event'
+'Création un évènement': 'Creating an event'

@@ -3,6 +3,7 @@
 namespace AppBundle\Form;
 
 
+use AppBundle\Form\Model\Contact;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -36,7 +37,7 @@ class ContactType extends AbstractType
     public function configureOptions(OptionsResolver $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'AppBundle\Form\Model\Contact'
+            'data_class' => Contact::class
         ));
     }
 

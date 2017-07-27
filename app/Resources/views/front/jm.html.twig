@@ -8,5 +8,65 @@
             <div class="row">
             </div>
         </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>Les dernières photos</h3>
+                <div class="row">
+                    {% for photo in dernieresPhotos %}
+                        <div class="col-lg-4">
+                            <img src="{{ asset('upload/photos/jmd/' ~ photo.file) }}" class="img-responsive"/>
+                            <p class="text-center"
+                               style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">{{ photo.title }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <h3>Les dernières vidéos</h3>
+                <div class="row">
+                    {% for video in dernieresVideos %}
+                        <div class="col-lg-4">
+                            <div class="embed-responsive embed-responsive-4by3">
+                                <iframe class="embed-responsive-item"
+                                        src="https://www.youtube.com/embed/{{ video.yTCode }}"></iframe>
+                            </div>
+                            <p class="text-center"
+                               style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">{{ video.title }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+
+            </div>
+
+        </div>
+
+        <hr>
+
+        <h3>Catégories</h3>
+        <div class="row">
+            {% for categorie in categories %}
+            {% if loop.index0 %4 == 0 %}
+        </div>
+        <div class="row">
+            {% endif %}
+
+            <div class="col-lg-3 col-md-4 col-sm-4 col-xs-6" style="margin-top:10px;">
+
+                <div style=" height: 132px;  overflow: hidden;">
+                    <a href="{{ path('page_JM_categorie', {id: categorie.id}) }}">
+                        <img class="img-responsive" style=""
+                             src="{{ asset('upload/photos/jmd/' ~ categorie.file) }}" alt="{{ categorie.title }}"/>
+                </div>
+                <div style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">
+                    {{ categorie.title }}
+                </div>
+
+                </a>
+
+            </div>
+            {% endfor %}
+        </div>
+
     </div>
 {% endblock %}

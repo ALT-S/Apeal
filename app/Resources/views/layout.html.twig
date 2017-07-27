@@ -30,13 +30,27 @@
                 <img src="{{ asset('images/theme/nav_icon.png') }}" alt=""/>
             </a>
             <ul class="nav" id="nav">
-                <li class="current"><a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a></li>
-                <li><a href="{{ path('about') }}">{% trans %}A propos{% endtrans %}</a></li>
-                <li><a href="{{ path('page_JM') }}">Jean-Marc Durrieu</a></li>
-                <li><a href="{{ path('page_MH') }}">Marie-Helene Lavergne</a></li>
-                <li><a href="{{ path('page_serge') }}">Monsieur Serge</a></li>
-                <li><a href="{{ path('actualites') }}">{% trans %}Blog{% endtrans %}</a></li>
-                <li><a href="{{ path('contact') }}">{% trans %}Contact{% endtrans %}</a></li>
+                <li class="{% if app.request.attributes.get('_route') == 'homepage' %}current{% endif %} ">
+                    <a href="{{ path('homepage') }}">{% trans %}Home{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'about' %}current{% endif %} ">
+                <a href="{{ path('about') }}">{% trans %}A propos{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'page_JM' %}current{% endif %} " >
+                    <a href="{{ path('page_JM') }}">Jean-Marc Durrieu</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'page_MH' %}current{% endif %} " >
+                    <a href="{{ path('page_MH') }}">Marie-Helene Lavergne</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'page_serge' %}current{% endif %} " >
+                    <a href="{{ path('page_serge') }}">Monsieur Serge</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'actualites' %}current{% endif %} " >
+                    <a href="{{ path('actualites') }}">{% trans %}Blog{% endtrans %}</a>
+                </li>
+                <li class="{% if app.request.attributes.get('_route') == 'contact' %}current{% endif %} " >
+                    <a href="{{ path('contact') }}">{% trans %}Contact{% endtrans %}</a>
+                </li>
                 <li class="langue langue-bis">
                     {% if app.request.locale != 'en' %}
                         <a href="?_locale=en">
@@ -132,13 +146,14 @@
     </div>
     <div class="footer_bottom">
         <div class="copy">
-            <p><a href="{{ path('login') }}"><i class=" glyphicon glyphicon-user" style="margin-right: 10px"></i></a>Copyright &copy; 2017 Alt-Design</p>
+            <p><a href="{{ path('admin_dashboard') }}"><i class=" glyphicon glyphicon-user" style="margin-right: 10px"></i></a>Copyright &copy; 2017 Alt-Design</p>
         </div>
     </div>
 </div>
 
+<script src="{{ asset('js/back/jquery-1.10.2.js') }}"></script>
 <script src="{{ asset('vendor/bootstrap/js/bootstrap.min.js') }}"></script>
-<script src="{{ asset('js/vendor/jquery.min.js') }}"></script>
+<script src="{{ asset('js/theme/responsive-nav.js') }}"></script>
 </body>
 
 </html>

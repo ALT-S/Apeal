@@ -2,63 +2,137 @@
 
 namespace AppBundle\Controller;
 
+use AppBundle\Entity\ArticleBlog;
 use AppBundle\Form\ContactType;
 use AppBundle\Form\Model\Contact;
+use BackBundle\Entity\JMDCategorie;
+use BackBundle\Entity\MHLCategorie;
+use BackBundle\Entity\MSMusique;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
+use Sensio\Bundle\FrameworkExtraBundle\Configuration\ParamConverter;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
+use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
 
 class FrontController extends Controller
 {
+
     /**
      * @Route("/", name="homepage")
      */
-    public function accueilAction(Request $request)
+    public function accueilAction()
     {
-        // replace this example code with whatever you need
+        $derniereBlog = $this->getDoctrine()->getRepository('AppBundle:ArticleBlog')->findBy([], ['id' => 'DESC'], 1);
+        $derniereJMD = $this->getDoctrine()->getRepository('BackBundle:JMDElement')->findBy([], ['id' => 'DESC'], 1);
+        $derniereMHL = $this->getDoctrine()->getRepository('BackBundle:MHLElement')->findBy([], ['id' => 'DESC'], 1);
+        $derniereMS = $this->getDoctrine()->getRepository('BackBundle:MSMusique')->findBy([], ['id' => 'DESC'], 1);
+
+
         return $this->render('front/accueil.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+            'derniereJMD' => reset($derniereJMD),
+            'derniereBlog' => reset($derniereBlog),
+            'derniereMHL' => reset($derniereMHL),
+            'derniereMS' => reset($derniereMS)
         ]);
     }
 
     /**
-     * @Route("/A propos", name="about")
+     * @Route("/a-propos", name="about")
      */
     public function aboutAction()
     {
-        // replace this example code with whatever you need
-        return $this->render('front/about.html.twig', [
-            'base_dir' => realpath($this->getParameter('kernel.project_dir')) . DIRECTORY_SEPARATOR,
+        return $this->render('front/about.html.twig');
+    }
+
+    /**
+     * @Route("/jean-marc-durrieu", name="page_JM")
+     */
+    public function page_JMAction()
+    {
+        $categories = $this->getDoctrine()->getRepository('BackBundle:JMDCategorie')->findBy([], ['title' => 'ASC']);
+
+        $maxPhotos = 3;
+        $dernieresPhotos = $this->getDoctrine()->getRepository('BackBundle:JMDElement')->findBy(['type' => 'photo'], ['id' => 'DESC'], $maxPhotos);
+
+        $maxVideos = 3;
+        $dernieresVideos = $this->getDoctrine()->getRepository('BackBundle:JMDElement')->findBy(['type' => 'video'], ['id' => 'DESC'], $maxVideos);
+
+        return $this->render('front/jm.html.twig', [
+            'categories' => $categories,
+            'dernieresPhotos' => $dernieresPhotos,
+            'dernieresVideos' => $dernieresVideos,
         ]);
     }
 
     /**
-     * @Route("/Jean-Marc Durrieu", name="page_JM")
+     * @Route("/jean-marc-durrieu/categorie/{id}", name="page_JM_categorie")
+     * @ParamConverter("categorie", class="BackBundle:JMDCategorie")
      */
-    public function page_JMAction()
+    public function page_JM_categorieAction(JMDCategorie $categorie)
     {
-        return $this->render('front/jm.html.twig');
+        $elements = $this->getDoctrine()->getRepository('BackBundle:JMDElement')->findBy(['categorie' => $categorie->getId()]);
+
+        return $this->render('front/jm_elements.html.twig', [
+            'elements' => $elements,
+            'categorie' => $categorie
+        ]);
     }
 
     /**
-     * @Route("/Marie-Helene Lavergne", name="page_MH")
+     * @Route("/marie-helene-lavergne", name="page_MH")
      */
     public function page_MHAction()
     {
-        return $this->render('front/mh.html.twig');
-    }
-    
-    /**
-     * @Route("/Monsieur Serge", name="page_serge")
-     */
-    public function page_sergeAction()
-    {
-        return $this->render('front/serge.html.twig');
+        $categories = $this->getDoctrine()->getRepository('BackBundle:MHLCategorie')->findBy([], ['title' => 'ASC']);
+        
+        return $this->render('front/mh.html.twig', [
+            'categories' => $categories,
+        ]);
     }
 
     /**
-     * @Route("/Actualités/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="actualites")
+     * @Route("/marie-helene-lavergne/categorie/{id}", name="page_MH_categorie")
+     * @ParamConverter("categorie", class="BackBundle:MHLCategorie")
+     */
+    public function page_MH_categorieAction(MHLCategorie $categorie)
+    {
+        $elements = $this->getDoctrine()->getRepository('BackBundle:MHLElement')->findBy(['categorie' => $categorie->getId()]);
+
+        return $this->render('front/mh_elements.html.twig', [
+            'elements' => $elements,
+            'categorie' => $categorie
+        ]);
+    }
+    
+    /**
+     * @Route("/monsieur-serge/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="page_serge")
+     */
+    public function page_sergeAction($page)
+    {
+        $nbMusiqueParPage = $this->container->getParameter('front_nb_musique_par_page');
+
+        $em = $this->getDoctrine()->getManager();
+        $repository = $em->getRepository('BackBundle:MSMusique');
+
+        $listMusiques = $repository->findAllPagineEtTrie($page, $nbMusiqueParPage);
+
+        $pagination = array(
+            'page' => $page,
+            'nbPages' => ceil(count($listMusiques) / $nbMusiqueParPage),
+            'nomRoute' => 'page_serge',
+            'paramsRoute' => array()
+        );
+
+        return $this->render('front/serge.html.twig', array(
+            'listMusiques' => $listMusiques,
+            'pagination' => $pagination
+        ));
+    }
+
+
+    /**
+     * @Route("/actualites/{page}", requirements={"page" = "\d+"}, defaults={"page" = 1}, name="actualites")
      */
     public function actualitesAction($page)
     {
@@ -83,7 +157,22 @@ class FrontController extends Controller
     }
 
     /**
-     * @Route("/Contact", name="contact")
+     * @Route("/actualite/{id}", name="actualite")
+     * @ParamConverter("article", class="AppBundle:ArticleBlog")
+     */
+    public function voirActualiteAction(ArticleBlog $article)
+    {
+        $em = $this->getDoctrine()->getManager();
+        $listArticles = $em->getRepository('AppBundle:ArticleBlog')->findBy([], ['date' => 'desc'], 3);
+
+        return $this->render('front/voirArticleBlog.html.twig', array(
+            'listArticles' => $listArticles,
+            'article' => $article
+        ));
+    }
+    
+    /**
+     * @Route("/contact", name="contact")
      * @Method({"GET","POST"})
      */
     public function contactAction(Request $request)

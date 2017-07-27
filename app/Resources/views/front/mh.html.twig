@@ -8,5 +8,32 @@
             <div class="row">
             </div>
         </div>
+
+        <h3>Catégories</h3>
+
+        <div class="row">
+            {% for categorie in categories %}
+            {% if loop.index0 %4 == 0 %}
+        </div>
+
+        <div class="row">
+            {% endif %}
+
+            <div class="col-lg-3 col-md-6 col-sm-6 col-xs-12 photo" style="margin-top:10px;">
+                <div style=" height: 132px;  overflow: hidden;">
+                    <a href="{{ path('page_MH_categorie', {id: categorie.id}) }}">
+                        <img class="img-responsive"
+                             src="{{ asset('upload/photos/mhl/' ~ categorie.file) }}"
+                             alt="{{ categorie.title| date('d-m-Y') }}"/>
+
+                </div>
+                <div style="background-color: rgba(0, 0, 0, 0.85); color:white; width:100%; padding:2px; padding-left:5px;">
+                    {{ categorie.title | date('d-m-Y') }}
+                </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
     </div>
+
 {% endblock %}

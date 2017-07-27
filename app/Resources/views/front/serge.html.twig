@@ -9,4 +9,39 @@
             </div>
         </div>
     </div>
+    <div class="container">
+        {% if listMusiques is not empty %}
+            <div>
+                <div class="row">
+                    {% for musique in listMusiques %}
+                    {% if loop.index0 % 2 == 0 %}
+                </div>
+                <div class="row">
+                    {% endif %}
+
+                    <div class="col-lg-1 col-xs-12">
+                        {{ musique.date |date('d/m/Y') }}
+                    </div>
+                    <div class="col-lg-11 col-xs-12" style="border-left: solid 1px #e4551d; margin-bottom: 40px;">
+
+                        <h3>{{ musique.title }}</h3>
+                        {#{% if musique.file is not null %}
+                            <img class="img-responsive" src="{{ asset('upload/photos/ms/' ~ musique.file) }}"
+                                 alt="{{ musique.title }}"/>
+                        {% endif %}#}
+                        <iframe width="100%" height="166" scrolling="no" frameborder="no"
+                                src="https://w.soundcloud.com/player/?url={{ musique.lien }}&amp;color=ff5500&amp;auto_play=false&amp;hide_related=false&amp;show_comments=true&amp;show_user=true&amp;show_reposts=false">
+
+                        </iframe>
+                    </div>
+
+
+                    {% endfor %}
+                </div><!-- row -->
+            </div>
+            {% include 'pagination.html.twig' %}
+        {% else %}
+            <p class="aucun">{% trans %}Il n'y a aucune musique pour l'instant.{% endtrans %}</p>
+        {% endif %}
+    </div>
 {% endblock %}

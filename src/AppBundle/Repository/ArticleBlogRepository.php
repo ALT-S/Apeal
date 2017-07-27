@@ -58,7 +58,7 @@ class ArticleBlogRepository extends \Doctrine\ORM\EntityRepository
 
             $qb->orderBy($mapping[$filtre], $ordreDeTri);
         } else {
-            $qb->orderBy('a.date', 'DESC');
+            $qb->orderBy('a.dateEvenement', 'DESC');
         }
 
         $query = $qb->getQuery();

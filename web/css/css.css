@@ -55,11 +55,13 @@ div.formContact > form > div > div > textarea:focus {
     padding-top: 20px;
 }
 
-.col-xs-offset-3.col-xs-6 p{
+.col-lg-offset-3.col-lg-6.col-xs-12   p{
     margin-bottom: 20px;
     font-size: 130%;
     text-align: justify;
 }
+
+
 
 div.bouton{
     padding: 5px 10px;
@@ -94,3 +96,10 @@ a.bts:hover{
     margin-bottom: 20px;
     color:#e4551d ;
 }
+
+@media (max-width:767px) {
+    .col-xs-12.photo {
+        width: auto!important;
+    }
+}
+
